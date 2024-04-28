@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('words', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('path');
+            $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
         });
     }
