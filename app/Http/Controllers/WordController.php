@@ -57,10 +57,35 @@ class WordController extends Controller
         $validate = Validator::make($request->all(), [
             'title' => 'required|string|max:250',
         ]);
+
+        if ($request->hasFile('fileToUpload')) {
+            $file_path = public_path($word->path);
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
+            $file = $request->file('fileToUpload');
+            $allowedExtensions = ['jpg', 'png', 'gif'];
+            $fileExtension = $file->getClientOriginalExtension();
+            if (!in_array($fileExtension, $allowedExtensions)) {
+                return redirect()->back()->withErrors(['fileToUpload' => 'Seuls les fichiers du type JPG, PNG, and GIF sont autorisés'])->withInput();
+            }
+            $file_name = $file->getClientOriginalName();
+            $file_ext = $file->getClientOriginalExtension();
+            $fileInfo = pathinfo($file_name);
+            $filename = $fileInfo['filename'];
+            $newname = uniqid() . "." . $file_ext; // Generate a unique filename
+            $destinationPath = 'uploads/images';
+            $file->move($destinationPath, $newname);
+            $pathToStore = $destinationPath.'/'.$newname;
+            $request->merge(['path' => $pathToStore]);
+        }
+        
         if ($validate->fails()) {
             return redirect()->back()->withErrors(['title' => 'Ce champ ne peut pas être vide'])->withInput();
         }
         $word->update($request->only('title'));
+        $word->update($request->only('path'));
+
         return redirect()->route('dashboard')->with('success', 'Le titre du mot a été mis à jour avec succès');
     }
 
