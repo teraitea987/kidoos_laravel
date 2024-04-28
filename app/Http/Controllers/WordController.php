@@ -99,4 +99,34 @@ class WordController extends Controller
         return redirect()->route('dashboard')->with('success', 'Votre mot a bien été supprimé');
     }
     
+    // debut des exo
+    public function french_choose()
+    {
+        $words = Word::all();
+        return view('francais.choose', compact('words'));
+    }
+
+    public function french_easy()
+    {
+        $words = Word::all();
+        return view('francais.easy', compact('words'));
+    }
+    
+    public function french_medium()
+    {
+        $words = Word::all();
+        return view('francais.medium', compact('words'));
+    }
+
+    public function french_hard()
+    {
+        $words = Word::all();
+        return view('francais.hard', compact('words'));
+    }
+
+    public function api_get_words()
+    {
+        $words = Word::all();
+        return response()->json($words);
+    }
 }
