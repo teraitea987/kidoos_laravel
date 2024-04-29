@@ -1,6 +1,7 @@
-
-  
-  <style>
+<script>
+    const api_url = '{{ env('APP_URL') }}';
+</script>
+<style>
     body {
         background: url({{ asset('assets/images/moyen.jpg') }});
         background-position: center;

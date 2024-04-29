@@ -1,7 +1,7 @@
 let words = [];
 let dodo = [];
 let imageInformations = [];
-const api_url = "http://localhost:8000/api_get_words";
+// const api_url = "http://localhost:8000/api_get_words";
 fetch(api_url)
     .then((response) => response.json())
     .then((data) => {

@@ -17,13 +17,13 @@
         <div class="flex justify-center mt-10">
 
             <x-nav-link class="mr-4" :href="route('french_easy')">
-                <img src="{{ asset('assets/images/facile.png') }}" alt="" class="w-90 h-90" />
+                <img src="{{ asset('assets/images/FACILE.png') }}" alt="" class="w-90 h-90" />
             </x-nav-link>
             <x-nav-link class="mr-4" :href="route('french_medium')">
-                <img src="{{ asset('assets/images/moyen.png') }}" alt="" class="w-90 h-90" />
+                <img src="{{ asset('assets/images/MOYEN.png') }}" alt="" class="w-90 h-90" />
             </x-nav-link>
             <x-nav-link class="mr-4" :href="route('french_hard')">
-                <img src="{{ asset('assets/images/difficile.png') }}" alt="" class="w-90 h-90" />
+                <img src="{{ asset('assets/images/DIFFICILE.png') }}" alt="" class="w-90 h-90" />
             </x-nav-link>
         </div>
     </div>
