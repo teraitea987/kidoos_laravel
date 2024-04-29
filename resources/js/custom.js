@@ -1,7 +1,7 @@
 let words = [];
 let dodo = [];
 let imageInformations = [];
-// const api_url = "http://localhost:8000/api_get_words";
+const api_url = "https://kidoos.fr/api_get_words";
 fetch(api_url)
     .then((response) => response.json())
     .then((data) => {
@@ -80,7 +80,7 @@ fetch(api_url)
                 let div = document.createElement("div");
                 div.classList.add("exo-content");
                 let img = document.createElement("img");
-                img.src = `http://localhost:8000/${img_path}`;
+                img.src = `https://kidoos.fr/${img_path}`;
                 div.appendChild(img);
 
                 let table = document.createElement("table");
